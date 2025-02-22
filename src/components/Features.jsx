@@ -103,12 +103,10 @@ const Features = () => (
     <div className="container mx-auto px-3 md:px-10">
       <div className="px-5 py-32">
         <p className="font-circular-web text-lg text-blue-50">
-          Into the Metagame Layer
+          Your brand isn’t just what people see
         </p>
         <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-          Immerse yourself in a rich and ever-expanding universe where a vibrant
-          array of products converge into an interconnected overlay experience
-          on your world.
+          it’s what they experience. Stand out with designs that captivate, interfaces that flow seamlessly, and interactions that leave a lasting impact.
         </p>
       </div>
 
@@ -166,18 +164,19 @@ const Features = () => (
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_2">
-          <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
-            <h1 className="bento-title special-font max-w-64 text-black">
-              M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
+          <a href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/contact" target="_blank" rel="noopener noreferrer" className="flex size-full flex-col justify-between bg-violet-300 p-5">
+            <h1 className="bento-title special-font max-w-54 text-black">
+              <b>Let's Build Something Exceptional.</b>
             </h1>
 
             <TiLocationArrow className="m-5 scale-[5] self-end" />
-          </div>
+          </a>
         </BentoTilt>
+
 
         <BentoTilt className="bento-tilt_2">
           <video
-            src="videos/feature-5.mp4"
+            src="videos/feature.mp4"
             loop
             muted
             autoPlay

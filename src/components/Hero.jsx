@@ -80,7 +80,15 @@ const Hero = () => {
     });
   });
 
-  const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
+  const getVideoSrc = (index) => {
+    const videoList = [
+      "/videos/hero-1.mp4",
+      "/videos/hero-2.mp4",
+      "/videos/hero-3.mp4",
+      "/videos/hero-4.mp4",
+    ];
+    return videoList[(index - 1) % videoList.length]; // Ensure it loops correctly
+  };
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
@@ -99,6 +107,7 @@ const Hero = () => {
         id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
       >
+        <div className="absolute inset-0 bg-black opacity-60 z-30"></div>
         <div>
           <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
             <VideoPreview>
@@ -140,32 +149,39 @@ const Hero = () => {
           />
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
-          G<b>A</b>MING
+        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 bg-gradient-to-r from-white via-gray-300 to-gray-300 bg-clip-text text-transparent text-2xl flex gap-x-2">
+          <b>DEVELOPER</b>
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading text-blue-100">
-              redefi<b>n</b>e
+            <h1 className="special-font hero-heading bg-gradient-to-r from-white via-gray-300 to-black bg-clip-text text-transparent text-2xl flex gap-x-2">
+              <b> HANORAH&nbsp; OKOSODO</b>
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Enter the Metagame Layer <br /> Unleash the Play Economy
+              I help brands and individuals stand out with dynamic, immersive Web and App experiences.
             </p>
 
-            <Button
-              id="watch-trailer"
-              title="Watch trailer"
-              leftIcon={<TiLocationArrow />}
-              containerClass="bg-yellow-300 flex-center gap-1"
-            />
+            <a
+              href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                id="watch-trailer"
+                title="Check Portfolio"
+                leftIcon={<TiLocationArrow />}
+                containerClass="bg-yellow-300 flex-center gap-1"
+              />
+            </a>
+
           </div>
         </div>
       </div>
 
       <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
-        G<b>A</b>MING
+        <b>DEVELOPER</b>
       </h1>
     </div>
   );
