@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 node_modules
-build
+
 .DS_Store
 .env
 
