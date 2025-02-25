@@ -124,7 +124,9 @@ const Features = () => (
       </BentoTilt>
 
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
+
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+          <div className="absolute inset-0 bg-black opacity-60 z-30"></div>
           <BentoCard
             src="videos/feature-2.mp4"
             title={
@@ -164,12 +166,12 @@ const Features = () => (
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_2">
-          <a href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/contact" target="_blank" rel="noopener noreferrer" className="flex size-full flex-col justify-between bg-violet-300 p-5">
-            <h1 className="bento-title special-font max-w-54 text-black">
+          <a href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/contact" target="_blank" rel="noopener noreferrer" className="flex size-full flex-col justify-between bg-violet-300 p-3">
+            <h1 className="bento-title special-font max-w-50 text-black ">
               <b>Let's Build Something Exceptional.</b>
             </h1>
 
-            <TiLocationArrow className="m-5 scale-[5] self-end" />
+            <TiLocationArrow className="m-5 scale-[3] self-end" />
           </a>
         </BentoTilt>
 

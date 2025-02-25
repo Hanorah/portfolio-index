@@ -13,11 +13,25 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
 
-  const nextVdRef = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [loadedVideos, setLoadedVideos] = useState(0);
+
   const totalVideos = 4;
+  const nextVdRef = useRef(null);
+
+  const handleVideoLoad = () => {
+    setLoadedVideos((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    if (loadedVideos === totalVideos - 1) {
+      setLoading(false);
+    }
+  }, [loadedVideos]);
 
   const handleMiniVdClick = () => {
     setHasClicked(true);
+
     setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
   };
 
@@ -78,6 +92,17 @@ const Hero = () => {
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
+      {loading && (
+        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
+          {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
+          <div className="three-body">
+            <div className="three-body__dot"></div>
+            <div className="three-body__dot"></div>
+            <div className="three-body__dot"></div>
+          </div>
+        </div>
+      )}
+
       <div
         id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
@@ -97,6 +122,7 @@ const Hero = () => {
                   muted
                   id="current-video"
                   className="size-64 origin-center scale-150 object-cover object-center"
+                  onLoadedData={handleVideoLoad}
                 />
               </div>
             </VideoPreview>
@@ -109,6 +135,7 @@ const Hero = () => {
             muted
             id="next-video"
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
+            onLoadedData={handleVideoLoad}
           />
           <video
             src={getVideoSrc(
@@ -118,6 +145,7 @@ const Hero = () => {
             loop
             muted
             className="absolute left-0 top-0 size-full object-cover object-center"
+            onLoadedData={handleVideoLoad}
           />
         </div>
 
@@ -127,7 +155,7 @@ const Hero = () => {
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading bg-gradient-to-r from-white via-gray-300 to-gray-300 bg-clip-text text-transparent text-2xl flex gap-x-2">
+            <h1 className="special-font hero-heading bg-gradient-to-r from-white via-gray-300 to-black bg-clip-text text-transparent text-2xl flex gap-x-2">
               <b> HANORAH&nbsp; OKOSODO</b>
             </h1>
 
@@ -147,6 +175,7 @@ const Hero = () => {
                 containerClass="bg-yellow-300 flex-center gap-1"
               />
             </a>
+
           </div>
         </div>
       </div>

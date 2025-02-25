@@ -1,143 +1,93 @@
 import clsx from "clsx";
 import gsap from "gsap";
-import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
-
 import Button from "./Button";
 
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "Project", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects" }, // Updated path
-  { name: "Resume", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/resume" }, // Updated path
-  { name: "About", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/about" }, // Updated path
-  { name: "Contact", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/contact" }, // Updated path
+  { name: "Project", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects" },
+  { name: "Resume", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/resume" },
+  { name: "About", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/about" },
+  { name: "Contact", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/contact" },
 ];
 
-
-
 const NavBar = () => {
-  // State for toggling audio and visual indicator
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-  const [isIndicatorActive, setIsIndicatorActive] = useState(false);
-
-  // Refs for audio and navigation container
-  const audioElementRef = useRef(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navContainerRef = useRef(null);
 
-  const { y: currentScrollY } = useWindowScroll();
-  const [isNavVisible, setIsNavVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  // Toggle audio and visual indicator
-  const toggleAudioIndicator = () => {
-    setIsAudioPlaying((prev) => !prev);
-    setIsIndicatorActive((prev) => !prev);
+  const toggleMenu = (e) => {
+    e.stopPropagation();
+    setIsMenuOpen((prev) => !prev);
   };
 
-  // Manage audio playback
+  const closeMenu = (e) => {
+    if (navContainerRef.current && !navContainerRef.current.contains(e.target)) {
+      setIsMenuOpen(false);
+    }
+  };
+
   useEffect(() => {
-    if (isAudioPlaying) {
-      audioElementRef.current.play();
+    if (isMenuOpen) {
+      gsap.to(navContainerRef.current, {
+        x: 0,
+        opacity: 1,
+        duration: 0.3,
+      });
+      document.addEventListener("click", closeMenu);
     } else {
-      audioElementRef.current.pause();
+      gsap.to(navContainerRef.current, {
+        x: "100%",
+        opacity: 0,
+        duration: 0.3,
+      });
+      document.removeEventListener("click", closeMenu);
     }
-  }, [isAudioPlaying]);
+    return () => document.removeEventListener("click", closeMenu);
+  }, [isMenuOpen]);
 
   useEffect(() => {
-    if (currentScrollY === 0) {
-      // Topmost position: show navbar without floating-nav
-      setIsNavVisible(true);
-      navContainerRef.current.classList.remove("floating-nav");
-    } else if (currentScrollY > lastScrollY) {
-      // Scrolling down: hide navbar and apply floating-nav
-      setIsNavVisible(false);
-      navContainerRef.current.classList.add("floating-nav");
-    } else if (currentScrollY < lastScrollY) {
-      // Scrolling up: show navbar with floating-nav
-      setIsNavVisible(true);
-      navContainerRef.current.classList.add("floating-nav");
-    }
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
 
-    setLastScrollY(currentScrollY);
-  }, [currentScrollY, lastScrollY]);
-
-  useEffect(() => {
-    gsap.to(navContainerRef.current, {
-      y: isNavVisible ? 0 : -100,
-      opacity: isNavVisible ? 1 : 0,
-      duration: 0.2,
-    });
-  }, [isNavVisible]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div
-      ref={navContainerRef}
-      className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
-    >
+    <div className={`fixed inset-x-0 top-0 z-50 h-16 transition-all duration-700 ${isScrolled ? "bg-black shadow-lg" : "bg-transparent"}`}>
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-between p-2">
-          {/* Logo and Product button */}
           <div className="flex items-center gap-4">
-            <img src="/img/logo.png" alt="logo" className="w-8" />
-
-            <a
-              href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects"
-              target="_blank"  // This will open the link in a new tab
-              rel="noopener noreferrer"  // For security
-            >
-              <Button
-                id="product-button"
-                title="Projects"
-                rightIcon={<TiLocationArrow />}
-                containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-              />
+            <img src="/img/logo.png" alt="logo" className="w-16" />
+            <a href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects" target="_blank" rel="noopener noreferrer">
+              <Button id="product-button" title="Projects" rightIcon={<TiLocationArrow />} containerClass="bg-blue-50 flex items-center justify-center gap-1" />
             </a>
-
-
           </div>
-
-          {/* Navigation Links and Audio Button */}
-          <div className="flex h-full items-center">
-            <div className="md:block">
-              {navItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.path}
-                  target="_blank"  // This will open the link in a new tab
-                  rel="noopener noreferrer" // Security for external links
-                  className="nav-hover-btn"
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
-
-            <button
-              onClick={toggleAudioIndicator}
-              className="ml-10 hidden items-center space-x-0.5"
-            >
-              <audio
-                ref={audioElementRef}
-                className="hidden"
-                src="/audio/loop.mp3"
-                loop
-              />
-              {[1, 2, 3, 4].map((bar) => (
-                <div
-                  key={bar}
-                  className={clsx("indicator-line", {
-                    active: isIndicatorActive,
-                  })}
-                  style={{
-                    animationDelay: `${bar * 0.1}s`,
-                  }}
-                />
-              ))}
-            </button>
+          <div className="md:flex hidden gap-6">
+            {navItems.map((item, index) => (
+              <a key={index} href={item.path} target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-white pr-6">
+                {item.name}
+              </a>
+            ))}
+          </div>
+          <div className="relative md:hidden">
+            <div className="absolute -inset-2 bg-yellow-300 flex-center gap-1 rounded-full w-10 h-15" />
+            <button onClick={toggleMenu} className="relative text-black-300 text-3xl">☰</button>
           </div>
         </nav>
       </header>
+      <div
+        ref={navContainerRef}
+        className={`fixed top-0 right-0 h-[35%] w-[35%] bg-black flex flex-col items-center justify-center gap-5 shadow-lg transform ${isMenuOpen ? "translate-x-0 opacity-60" : "translate-x-full opacity-0"} rounded-bl-[10%] rounded-tl-[10%] md:hidden`}
+      >
+        {navItems.map((item, index) => (
+          <a key={index} href={item.path} target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-white w-full text-center border-b border-white pb-2">
+            {item.name}
+          </a>
+        ))}
+      </div>
     </div>
   );
 };
