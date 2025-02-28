@@ -83,7 +83,6 @@ const Hero = () => {
   const getVideoSrc = (index) => {
     const videoList = [
       "/videos/hero-1.mp4",
-      "/videos/hero-2.mp4",
       "/videos/hero-3.mp4",
       "/videos/hero-4.mp4",
     ];
@@ -155,13 +154,16 @@ const Hero = () => {
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading bg-gradient-to-r from-white via-gray-300 to-black bg-clip-text text-transparent text-2xl flex gap-x-2">
-              <b> HANORAH&nbsp; OKOSODO</b>
-            </h1>
+            <div className="bg-white opacity-90 p-4 rounded-[15px] inline-block">
+              <h1 className="special-font hero-heading text-black text-2xl flex gap-x-2 relative">
+                <b>HANORAH&nbsp; OKOSODO</b>
+              </h1>
 
-            <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Software Developer <br /> I help brands and individuals stand out with dynamic, immersive Web and App experiences.
-            </p>
+              <p className="mb-5 max-w-64 font-robert-regular text-black font-bold">
+                Software Developer <br /> I help brands and individuals stand out with dynamic, immersive Web and App experiences.
+              </p>
+            </div>
+
 
             <a
               href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects"
@@ -172,7 +174,7 @@ const Hero = () => {
                 id="watch-trailer"
                 title="Check Portfolio"
                 leftIcon={<TiLocationArrow />}
-                containerClass="bg-yellow-300 flex-center gap-1"
+                containerClass="bg-yellow-300 flex-center gap-1 mt-8"
               />
             </a>
 
