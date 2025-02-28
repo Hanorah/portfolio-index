@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 
+
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
   const itemRef = useRef(null);
@@ -74,24 +75,30 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
         </div>
 
         {isComingSoon && (
-          <div
-            ref={hoverButtonRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/20"
+          <a
+            href="https://portfolio-hanorahs-projects.vercel.app/projects"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            {/* Radial gradient hover effect */}
             <div
-              className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
-              style={{
-                opacity: hoverOpacity,
-                background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
-              }}
-            />
-            <TiLocationArrow className="relative z-20" />
-            <p className="relative z-20">coming soon</p>
-          </div>
+              ref={hoverButtonRef}
+              onMouseMove={handleMouseMove}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white"
+            >
+              {/* Radial gradient hover effect */}
+              <div
+                className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+                style={{
+                  opacity: hoverOpacity,
+                  background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
+                }}
+              />
+              <TiLocationArrow className="relative z-20" />
+              <p className="relative z-20">Check Projects</p>
+            </div>
+          </a>
         )}
       </div>
     </div>
@@ -115,55 +122,69 @@ const Features = () => (
           src="videos/feature-1.mp4"
           title={
             <>
-              radia<b>n</b>t
+              <b>Development</b>
             </>
           }
-          description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
+          description="Whether it's a dynamic web app, an intuitive user interface, or seamless backend architecture, every project is built with precision, performance, and a touch of creativity."
           isComingSoon
         />
+        <div className="absolute inset-0 bg-black opacity-70 "></div>
       </BentoTilt>
 
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
 
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
-          <div className="absolute inset-0 bg-black opacity-60 z-30"></div>
+
           <BentoCard
             src="videos/feature-2.mp4"
             title={
               <>
-                zig<b>m</b>a
+                <b>Optimize</b>
               </>
             }
-            description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
+            description="My favorite word is optimize. I'm never content with how things are. I'm always asking myself how can something be done better or faster. Creating websites that are clean and intuitive is my passion. I always try to put myself in the shoes of the customer."
             isComingSoon
           />
+          <div className="absolute inset-0 bg-black opacity-60 "></div>
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
           <BentoCard
-            src="videos/feature-3.mp4"
+            src="videos/hero-4.mp4"
             title={
               <>
-                n<b>e</b>xus
+                <b>Skills</b>
               </>
             }
-            description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
+            description={
+              <p className="text-xs md:text-sm">
+                Skilled in Python, JavaScript, React, and Tailwind CSS—crafting high-quality solutions that solve real-world problems.
+              </p>
+            }
             isComingSoon
           />
+          <div className="absolute inset-0 bg-black opacity-60 "></div>
         </BentoTilt>
+
 
         <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
           <BentoCard
             src="videos/feature-4.mp4"
             title={
               <>
-                az<b>u</b>l
+                <b>Motion &nbsp; UI</b>
               </>
             }
-            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
+            description={
+              <p className="text-xs md:text-sm">
+                Captivate your audience with smooth, engaging Motion UI animations that enhance your brand’s visual appeal and boost engagement.
+              </p>
+            }
             isComingSoon
           />
+          <div className="absolute inset-0 bg-black opacity-50"></div>
         </BentoTilt>
+
 
         <BentoTilt className="bento-tilt_2">
           <a href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/contact" target="_blank" rel="noopener noreferrer" className="flex size-full flex-col justify-between bg-violet-300 p-3">
@@ -189,5 +210,6 @@ const Features = () => (
     </div>
   </section>
 );
+
 
 export default Features;

@@ -5,10 +5,10 @@ import { TiLocationArrow } from "react-icons/ti";
 import Button from "./Button";
 
 const navItems = [
-  { name: "Project", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects" },
-  { name: "Resume", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/resume" },
-  { name: "About", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/about" },
-  { name: "Contact", path: "https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/contact" },
+  { name: "Project", path: "https://portfolio-hanorahs-projects.vercel.app/projects" },
+  { name: "Resume", path: "https://portfolio-hanorahs-projects.vercel.app/resume" },
+  { name: "About", path: "https://portfolio-hanorahs-projects.vercel.app/about" },
+  { name: "Contact", path: "https://portfolio-hanorahs-projects.vercel.app/contact" },
 ];
 
 const NavBar = () => {
@@ -32,6 +32,7 @@ const NavBar = () => {
       gsap.to(navContainerRef.current, {
         x: 0,
         opacity: 1,
+        display: "flex",
         duration: 0.3,
       });
       document.addEventListener("click", closeMenu);
@@ -40,6 +41,11 @@ const NavBar = () => {
         x: "100%",
         opacity: 0,
         duration: 0.3,
+        onComplete: () => {
+          if (navContainerRef.current) {
+            navContainerRef.current.style.display = "none";
+          }
+        },
       });
       document.removeEventListener("click", closeMenu);
     }
@@ -61,7 +67,7 @@ const NavBar = () => {
         <nav className="flex size-full items-center justify-between p-2">
           <div className="flex items-center gap-4">
             <img src="/img/logo.png" alt="logo" className="w-16" />
-            <a href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects" target="_blank" rel="noopener noreferrer">
+            <a href="https://portfolio-hanorahs-projects.vercel.app/projects" target="_blank" rel="noopener noreferrer">
               <Button id="product-button" title="Projects" rightIcon={<TiLocationArrow />} containerClass="bg-blue-50 flex items-center justify-center gap-1" />
             </a>
           </div>
@@ -72,18 +78,22 @@ const NavBar = () => {
               </a>
             ))}
           </div>
-          <div className="relative md:hidden">
-            <div className="absolute -inset-2 bg-yellow-300 flex-center gap-1 rounded-full w-10 h-15" />
-            <button onClick={toggleMenu} className="relative text-black-300 text-3xl">☰</button>
+          <div className="relative md:hidden bg-white flex-center gap-1 rounded-full w-10 h-12">
+            <button onClick={toggleMenu} className="relative text-black text-3xl ">
+              {isMenuOpen ? "✖" : "☰"}
+            </button>
           </div>
         </nav>
       </header>
+
+      {/* Mobile Menu */}
       <div
         ref={navContainerRef}
-        className={`fixed top-0 right-0 h-[35%] w-[35%] bg-black flex flex-col items-center justify-center gap-5 shadow-lg transform ${isMenuOpen ? "translate-x-0 opacity-60" : "translate-x-full opacity-0"} rounded-bl-[10%] rounded-tl-[10%] md:hidden`}
+        style={{ display: isMenuOpen ? "flex" : "none" }}
+        className="fixed top-20 right-20 h-[35%] w-[35%] bg-black flex-col items-center justify-center gap-5 shadow-lg transform translate-x-full opacity-0 rounded-bl-[10%] rounded-tr-[10%] rounded-br-[10%] rounded-tl-[10%] md:hidden"
       >
         {navItems.map((item, index) => (
-          <a key={index} href={item.path} target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-white w-full text-center border-b border-white pb-2">
+          <a key={index} href={item.path} target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-white w-full text-center">
             {item.name}
           </a>
         ))}

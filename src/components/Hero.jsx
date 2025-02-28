@@ -160,7 +160,7 @@ const Hero = () => {
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              I help brands and individuals stand out with dynamic, immersive Web and App experiences.
+              Software Developer <br /> I help brands and individuals stand out with dynamic, immersive Web and App experiences.
             </p>
 
             <a

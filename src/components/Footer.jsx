@@ -1,39 +1,47 @@
-import { FaDiscord, FaTwitter, FaYoutube, FaMedium } from "react-icons/fa";
+import React from "react";
+import { FaTwitter, FaFacebook, FaLinkedin, FaGithub, FaInstagram, FaDribbble } from "react-icons/fa";
+import { FiArrowRight } from "react-icons/fi"; // Import arrow icon
 
 const socialLinks = [
-  { href: "https://discord.com", icon: <FaDiscord /> },
-  { href: "https://twitter.com", icon: <FaTwitter /> },
-  { href: "https://youtube.com", icon: <FaYoutube /> },
-  { href: "https://medium.com", icon: <FaMedium /> },
+  { href: "https://twitter.com/hanorah", icon: <FaTwitter /> },
+  { href: "https://www.facebook.com/", icon: <FaFacebook /> },
+  { href: "https://linkedin.com/in/hanorah", icon: <FaLinkedin /> },
+  { href: "https://github.com/hanorah", icon: <FaGithub /> },
+  { href: "https://dribbble.com/hanorah", icon: <FaDribbble /> },
+  { href: "https://instagram.com/hanorah", icon: <FaInstagram /> },
 ];
 
 const Footer = () => {
   return (
-    <footer className="w-screen bg-[#5542ff] py-4 text-black">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 md:flex-row">
-        <p className="text-center text-sm font-light md:text-left">
-          ©Nova 2024. All rights reserved
-        </p>
+    <footer className="w-full bg-black text-white py-6">
+      <div className="container mx-auto flex flex-col items-center md:flex-row justify-between px-6">
+        {/* Branding & Copyright */}
+        <p className="text-sm text-white">© 2025 Hanorah. All rights reserved.</p>
 
-        <div className="flex justify-center gap-4  md:justify-start">
+        {/* Social Media Icons */}
+        <div className="flex gap-5">
           {socialLinks.map((link, index) => (
             <a
               key={index}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black transition-colors duration-500 ease-in-out hover:text-white"
+              className="text-white hover:text-yellow-300 transition-transform transform hover:scale-110 text-xl"
             >
               {link.icon}
             </a>
           ))}
         </div>
 
+        {/* See More Projects Link with Animated Arrow */}
         <a
-          href="#privacy-policy"
-          className="text-center text-sm font-light hover:underline md:text-right"
+          href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-sm text-white hover:text-yellow-300 transition-colors group"
         >
-          Privacy Policy
+          See more projects
+          <FiArrowRight className="text-lg transition-transform transform group-hover:translate-x-2" />
         </a>
       </div>
     </footer>
