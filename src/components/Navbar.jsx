@@ -5,10 +5,11 @@ import { TiLocationArrow } from "react-icons/ti";
 import Button from "./Button";
 
 const navItems = [
+  { name: "Hello", path: "https://portfolio-518giaxf1-hanorahs-projects.vercel.app/" },
   { name: "Project", path: "https://portfolio-hanorahs-projects.vercel.app/projects" },
-  { name: "Resume", path: "https://portfolio-hanorahs-projects.vercel.app/resume" },
-  { name: "About", path: "https://portfolio-hanorahs-projects.vercel.app/about" },
-  { name: "Contact", path: "https://portfolio-hanorahs-projects.vercel.app/contact" },
+  { name: "Resume", path: "https://portfolio-518giaxf1-hanorahs-projects.vercel.app/resume" },
+  { name: "About", path: "https://portfolio-518giaxf1-hanorahs-projects.vercel.app/about" },
+  { name: "Contact", path: "https://portfolio-518giaxf1-hanorahs-projects.vercel.app/contact" },
 ];
 
 const NavBar = () => {
