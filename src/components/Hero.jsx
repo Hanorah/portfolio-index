@@ -12,7 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
-
   const [loading, setLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
 
@@ -24,43 +23,44 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    if (loadedVideos === totalVideos - 1) {
-      setLoading(false);
+    if (loadedVideos > 0) {
+      setLoading(false); // Hide loader when at least one video loads
     }
   }, [loadedVideos]);
 
+  // Force hide preloader after 5s
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+    return () => clearTimeout(timeout);
+  }, []);
+
   const handleMiniVdClick = () => {
     setHasClicked(true);
-
     setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
   };
 
-  useGSAP(
-    () => {
-      if (hasClicked) {
-        gsap.set("#next-video", { visibility: "visible" });
-        gsap.to("#next-video", {
-          transformOrigin: "center center",
-          scale: 1,
-          width: "100%",
-          height: "100%",
-          duration: 1,
-          ease: "power1.inOut",
-          onStart: () => nextVdRef.current.play(),
-        });
-        gsap.from("#current-video", {
-          transformOrigin: "center center",
-          scale: 0,
-          duration: 1.5,
-          ease: "power1.inOut",
-        });
-      }
-    },
-    {
-      dependencies: [currentIndex],
-      revertOnUpdate: true,
+  useGSAP(() => {
+    if (hasClicked) {
+      gsap.set("#next-video", { visibility: "visible" });
+      gsap.to("#next-video", {
+        transformOrigin: "center center",
+        scale: 1,
+        width: "100%",
+        height: "100%",
+        duration: 1,
+        ease: "power1.inOut",
+        onStart: () => nextVdRef.current.play(),
+      });
+      gsap.from("#current-video", {
+        transformOrigin: "center center",
+        scale: 0,
+        duration: 1.5,
+        ease: "power1.inOut",
+      });
     }
-  );
+  }, [currentIndex]);
 
   useGSAP(() => {
     gsap.set("#video-frame", {
@@ -93,7 +93,6 @@ const Hero = () => {
     <div className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
         <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
-          {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
           <div className="three-body">
             <div className="three-body__dot"></div>
             <div className="three-body__dot"></div>
@@ -163,7 +162,6 @@ const Hero = () => {
                 Software Developer <br /> I help brands and individuals stand out with dynamic, immersive Web and App experiences.
               </p>
             </div>
-
 
             <a
               href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects"
