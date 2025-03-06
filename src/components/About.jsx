@@ -30,7 +30,7 @@ const About = () => {
     <div id="about" className="min-h-screen w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
         <p className="font-general text-sm uppercase md:text-[10px]">
-          Hey there I;m Norah and I'll help
+          Hey there i'll help you
         </p>
 
         <AnimatedTitle
@@ -43,7 +43,7 @@ const About = () => {
       <div className="h-dvh w-screen" id="clip">
         <div className="mask-clip-path about-image">
           <iframe
-            src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&loop=1&controls=0&playlist=YOUR_VIDEO_ID"
+            src="https://www.youtube.com/embed/wHzWZ7umH_c?si=u-yKHCP4dSNspkME"
             title="Background Video"
             className="absolute left-0 top-0 size-full object-cover"
             allow="autoplay; fullscreen"

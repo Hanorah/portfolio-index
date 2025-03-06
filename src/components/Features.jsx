@@ -112,7 +112,7 @@ const Features = () => (
         <p className="font-circular-web text-lg text-blue-50">
           Your brand isn’t just what people see
         </p>
-        <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
+        <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-90">
           it’s what they experience. Stand out with designs that captivate, interfaces that flow seamlessly, and interactions that leave a lasting impact.
         </p>
       </div>
@@ -126,9 +126,9 @@ const Features = () => (
             </>
           }
           description="Whether it's a dynamic web app, an intuitive user interface, or seamless backend architecture, every project is built with precision, performance, and a touch of creativity."
-          isComingSoon
+
         />
-        <div className="absolute inset-0 bg-black opacity-70 "></div>
+        <div className="absolute inset-0 bg-black opacity-90 "></div>
       </BentoTilt>
 
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
@@ -136,35 +136,19 @@ const Features = () => (
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
 
           <BentoCard
-            src="videos/feature-2.mp4"
+            src="videos/hero-3.mp4"
             title={
               <>
                 <b>Optimize</b>
               </>
             }
             description="My favorite word is optimize. I'm never content with how things are. I'm always asking myself how can something be done better or faster. Creating websites that are clean and intuitive is my passion. I always try to put myself in the shoes of the customer."
-            isComingSoon
+
           />
-          <div className="absolute inset-0 bg-black opacity-60 "></div>
+          <div className="absolute inset-0 bg-black opacity-90 "></div>
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
-          <BentoCard
-            src="videos/hero-4.mp4"
-            title={
-              <>
-                <b>Skills</b>
-              </>
-            }
-            description={
-              <p className="text-xs md:text-sm">
-                Skilled in Python, JavaScript, React, and Tailwind CSS—crafting high-quality solutions that solve real-world problems.
-              </p>
-            }
-            isComingSoon
-          />
-          <div className="absolute inset-0 bg-black opacity-60 "></div>
-        </BentoTilt>
+
 
 
         <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
@@ -182,19 +166,10 @@ const Features = () => (
             }
             isComingSoon
           />
-          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="absolute inset-0 bg-black opacity-90"></div>
         </BentoTilt>
 
 
-        <BentoTilt className="bento-tilt_2">
-          <a href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/contact" target="_blank" rel="noopener noreferrer" className="flex size-full flex-col justify-between bg-violet-300 p-3">
-            <h1 className="bento-title special-font max-w-50 text-black ">
-              <b>Let's Build Something Exceptional.</b>
-            </h1>
-
-            <TiLocationArrow className="m-5 scale-[3] self-end" />
-          </a>
-        </BentoTilt>
 
 
         <BentoTilt className="bento-tilt_2">

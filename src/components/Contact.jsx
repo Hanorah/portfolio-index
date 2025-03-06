@@ -35,16 +35,8 @@ const Contact = () => {
         </div>
 
         <div className="relative z-50 flex flex-col items-center text-center">
-          <p className="mb-10 font-general text-[10px] uppercase text-white">
-            SOFTWARE DEVELOPMENT
-          </p>
 
-          <AnimatedTitle
-            title="let&#39;s b<b>u</b>ild the <br /> new era of <br /> <b>development</b>"
-            className="relative z-50 special-font !md:text-[6.2rem] w-full font-zentry !text-5xl !font-black !leading-[.9] text-white"
-          />
-
-          <Button title="contact us" containerClass="mt-10 cursor-pointer" />
+          <Button title="contact" containerClass="mt-10 cursor-pointer" />
         </div>
 
       </div>

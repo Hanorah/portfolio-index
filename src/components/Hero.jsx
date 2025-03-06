@@ -105,7 +105,7 @@ const Hero = () => {
         id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
       >
-        <div className="absolute inset-0 bg-black opacity-60 z-30"></div>
+        <div className="absolute inset-0 bg-black opacity-80 z-30"></div>
         <div>
           <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
             <VideoPreview>
