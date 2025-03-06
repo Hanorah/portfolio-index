@@ -35,8 +35,9 @@ const Contact = () => {
         </div>
 
         <div className="relative z-50 flex flex-col items-center text-center">
-
-          <Button title="contact" containerClass="mt-10 cursor-pointer" />
+          <a
+            href="mailto:ksdnorah@gmail.com">
+            <Button title="contact" containerClass="mt-10 cursor-pointer" />  </a>
         </div>
 
       </div>
