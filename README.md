@@ -121,7 +121,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser to view the 
 body {
   width: 100dvw;
   overflow-x: hidden;
-  background-color: #dfdff0;
+  background-color: #fff;
   font-family: "General Sans", sans-serif;
 }
 
