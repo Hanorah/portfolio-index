@@ -153,7 +153,7 @@ const Hero = () => {
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
-            <div className="bg-white opacity-90 p-4 rounded-[15px] inline-block">
+            <div className="bg-white opacity-80 p-4 rounded-[15px] inline-block">
               <h1 className="special-font hero-heading text-black text-2xl flex gap-x-2 relative">
                 <b>HANORAH&nbsp; OKOSODO</b>
               </h1>
