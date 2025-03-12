@@ -164,7 +164,7 @@ const Hero = () => {
             </div>
 
             <a
-              href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects"
+              href="https://portfolio-hanorahs-projects.vercel.app/projects"
               target="_blank"
               rel="noopener noreferrer"
             >

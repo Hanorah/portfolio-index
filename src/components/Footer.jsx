@@ -35,7 +35,7 @@ const Footer = () => {
 
         {/* See More Projects Link with Animated Arrow */}
         <a
-          href="https://portfolio-fqgncfzah-hanorahs-projects.vercel.app/projects"
+          href="https://portfolio-hanorahs-projects.vercel.app/projects"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-sm text-white hover:text-yellow-300 transition-colors group"
